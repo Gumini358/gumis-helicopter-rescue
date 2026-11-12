@@ -32,6 +32,8 @@ let hasLanded = false;
 let posX = 100;
 let posY = 100;
 
+// Holder oversikt over forrige landingsstatus
+let wasLanded = false;
 // Antall piksler helikopteret flytter seg
 const speed = 20;
 
@@ -124,7 +126,11 @@ function checkLanding() {
         centerY >= helipadRect.top &&
         centerY <= helipadRect.bottom;
 
-
+ // Endrer rotorhastigheten bare ved landing eller avgang
+       if (landed !== wasLanded) {
+      changeRotorSpeed(landed ? 2 : 0.12);
+      wasLanded = landed;
+}
  
  // Oppdaterer flystatus og rotorhastighet
 if (landed) {
@@ -133,6 +139,7 @@ if (landed) {
 
     // Senker rotorhastigheten ved landing
     helicopter.classList.add("landed");
+    
 
 } else {
     flightStatus.textContent = "I LUFTEN";
@@ -140,7 +147,9 @@ if (landed) {
 
     // Øker rotorhastigheten ved avgang
     helicopter.classList.remove("landed");
+    
 }
+
 
 
 
@@ -259,3 +268,50 @@ function startNewMission() {
 startNewMission();
 }
 
+
+// Styrer rotorhastigheten med jevn overgang
+const sarRotor = document.querySelector(".sar-rotor");
+
+let currentRotorSpeed = 0.12;
+let rotorAnimationFrame = null;
+
+
+ // Endrer rotorhastigheten gradvis
+function changeRotorSpeed(targetSpeed) {
+
+    // Stopper en tidligere overgang
+    if (rotorAnimationFrame !== null) {
+        cancelAnimationFrame(rotorAnimationFrame);
+        rotorAnimationFrame = null;
+    }
+
+    function animateRotor() {
+        const difference = targetSpeed - currentRotorSpeed;
+
+        // Justerer hastigheten gradvis
+        currentRotorSpeed += difference * 0.04;
+
+        // Oppdaterer CSS-variabelen
+        sarRotor.style.setProperty(
+            "--rotor-speed",
+            currentRotorSpeed + "s"
+        );
+
+        // Stopper når ønsket hastighet er nådd
+        if (Math.abs(difference) < 0.01) {
+            currentRotorSpeed = targetSpeed;
+
+            sarRotor.style.setProperty(
+                "--rotor-speed",
+                currentRotorSpeed + "s"
+            );
+
+            rotorAnimationFrame = null;
+            return;
+        }
+
+        rotorAnimationFrame = requestAnimationFrame(animateRotor);
+    }
+
+    rotorAnimationFrame = requestAnimationFrame(animateRotor);
+}
