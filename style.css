@@ -1,0 +1,510 @@
+
+/* Moderne spilldesign – topptekst */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap');
+
+/* Grunnleggende stil */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #071b35, #123d60);
+    color: white;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Topptekst */
+header {
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #ffcc33;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    color: #cde7f5;
+}
+
+/* Spillinformasjon */
+.game-info {
+    padding: 15px;
+}
+
+.game-info h2 {
+    margin-bottom: 10px;
+    color: #ffcc33;
+}
+
+.game-info p {
+    line-height: 1.6;
+}
+
+/* Spilleområde */
+#game-area {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 500px;
+    margin: 25px auto;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    border-radius: 18px;
+    background: linear-gradient(
+        135deg,
+        #084b83,
+        #087eaa,
+        #39b9c9
+    );
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    cursor: crosshair;
+}
+
+/* Helikopter */
+#helicopter {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    user-select: none;
+    z-index: 10;
+    transition: left 0.08s linear, top 0.08s linear;
+}
+
+/* Spillkontroller */
+.game-controls {
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.game-controls p {
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+/* Bunntekst */
+footer {
+    padding: 25px;
+    color: #b8d4e5;
+    font-size: 14px;
+}
+
+/* Mobiltilpasning */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 23px;
+    }
+
+    #game-area {
+        width: 95%;
+        height: 400px;
+    }
+
+    #helicopter {
+        font-size: 42px;
+    }
+}
+
+
+
+.game-header {
+    padding: 40px 20px 25px;
+    background: linear-gradient(180deg, #04101f, #0b2942);
+    border-bottom: 1px solid rgba(0, 225, 255, 0.25);
+}
+
+.game-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #41e0f5;
+    margin-bottom: 18px;
+}
+
+.game-header h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.game-title-main {
+    font-size: clamp(38px, 7vw, 70px);
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: #ffffff;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+}
+
+.game-title-sub {
+    font-size: clamp(17px, 3.5vw, 34px);
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #40e0f5;
+    text-shadow:
+        0 0 10px rgba(64, 224, 245, 0.8),
+        0 0 30px rgba(64, 224, 245, 0.35);
+}
+
+.game-subtitle {
+    margin-top: 18px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #b0c9dc;
+}
+
+.system-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 9px 18px;
+    border: 1px solid rgba(64, 224, 245, 0.4);
+    border-radius: 30px;
+    background: rgba(64, 224, 245, 0.08);
+    color: #40e0f5;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #40ffb0;
+    box-shadow: 0 0 12px #40ffb0;
+    animation: statusPulse 1.5s infinite;
+}
+
+/* Animasjon for systemstatus */
+@keyframes statusPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* Tilpasning for mobil */
+@media (max-width: 600px) {
+    .game-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .game-title-main {
+        letter-spacing: 5px;
+    }
+
+    .game-title-sub {
+        letter-spacing: 1px;
+    }
+
+    .game-subtitle {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+}
+
+
+/* Hav med dybde og bølger */
+#game-area {
+    background:
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(65, 200, 220, 0.35),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #06375c,
+            #087eaa 55%,
+            #06476e
+        );
+}
+
+/* Felles stil for øyene */
+.island {
+    position: absolute;
+    background: linear-gradient(
+        135deg,
+        #357b49,
+        #194d32
+    );
+    border: 9px solid #b7b18a;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Stor øy */
+.island-1 {
+    width: 210px;
+    height: 140px;
+    left: 8%;
+    top: 58%;
+    border-radius: 60% 40% 55% 45%;
+    transform: rotate(-20deg);
+}
+
+/* Øy på høyre side */
+.island-2 {
+    width: 170px;
+    height: 120px;
+    right: 8%;
+    top: 15%;
+    border-radius: 45% 65% 40% 60%;
+    transform: rotate(25deg);
+}
+
+/* Liten øy */
+.island-3 {
+    width: 115px;
+    height: 85px;
+    left: 52%;
+    top: 65%;
+    border-radius: 65% 40% 60% 45%;
+    transform: rotate(15deg);
+}
+
+/* Landingsplass for helikopter */
+#helipad {
+    position: absolute;
+    right: 12%;
+    bottom: 10%;
+    width: 90px;
+    height: 90px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    background: #263746;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.45);
+    z-index: 2;
+    pointer-events: none;
+}
+
+#helipad span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 45px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+/* Helikopter flyr over landskapet */
+#helicopter {
+    z-index: 10;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    pointer-events: none;
+}
+
+
+/* Melding når redningsoppdraget er fullført */
+#mission-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    width: 85%;
+    max-width: 380px;
+    padding: 30px 20px;
+
+    background: rgba(5, 25, 42, 0.95);
+    border: 2px solid #40ffb0;
+    border-radius: 16px;
+
+    box-shadow: 0 0 35px rgba(64, 255, 176, 0.3);
+
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 20;
+
+    transition: opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s;
+}
+
+/* Viser meldingen */
+#mission-message.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#mission-message strong {
+    color: #40ffb0;
+    font-size: clamp(14px, 3vw, 22px);
+    text-shadow: 0 0 15px rgba(64, 255, 176, 0.6);
+}
+
+#mission-message span {
+    font-size: 13px;
+    color: #ffffff;
+}
+
+#mission-message small {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #40e0f5;
+}
+
+
+/* Person som trenger redning */
+#rescue-person {
+    position: absolute;
+    left: 15%;
+    top: 66%;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+    z-index: 5;
+
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.2);
+
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+
+    animation: rescuePulse 1.5s infinite;
+
+    pointer-events: none;
+}
+
+/* Pulserende nødsignal */
+@keyframes rescuePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+    }
+}
+
+/* Skjuler personen etter redning */
+#rescue-person.rescued {
+    display: none;
+}
+
+
+/* Redningshelikopter med roterende rotor */
+#helicopter {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Helikopterets kropp */
+.helicopter-body {
+    position: relative;
+    font-size: 48px;
+    z-index: 2;
+    user-select: none;
+}
+
+/* Roterende hovedrotor */
+.helicopter-rotor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 76px;
+    height: 8px;
+    margin-left: -38px;
+    margin-top: -4px;
+
+    border-radius: 50%;
+    background: linear-gradient(
+        90deg,
+        #172b3b,
+        #dce8ee,
+        #172b3b
+    );
+
+    transform-origin: center;
+    animation: rotorSpin 0.15s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Animasjon for helikopterrotoren */
+@keyframes rotorSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+ 
+
+/* Tilpasser helikopterbildet */
+#helicopter {
+    width: 90px;
+    height: 70px;
+}
+
+/* Redningshelikopter sett ovenfra */
+.helicopter-body {
+    display: block;
+    width: 90px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Rotor over helikopteret */
+.helicopter-rotor {
+    width: 85px;
+    margin-left: -42.5px;
+    z-index: 3;
+}

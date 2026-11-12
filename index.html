@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUMIS Helicopter Rescue – Øygarden</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    
+<header class="game-header">
+    <p class="game-label">RESCUE OPERATIONS • ØYGARDEN</p>
+
+    <h1>
+        <span class="game-title-main">GUMIS</span>
+        <span class="game-title-sub">HELICOPTER RESCUE</span>
+    </h1>
+
+    <p class="game-subtitle">
+        NORTH SEA • SEARCH & RESCUE
+    </p>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        SYSTEM ONLINE
+    </div>
+</header>
+
+
+    <main>
+        <section class="game-info">
+            <h2>Velkommen, pilot!</h2>
+            <p>
+                Bruk piltastene for å styre helikopteret.
+                Klikk på kartet for å flytte helikopteret.
+            </p>
+        </section>
+
+        
+<!-- Spilleområde med øyer og landingsplass -->
+<div id="game-area">
+
+    <!-- Øyer i havet -->
+    <div class="island island-1"></div>
+    <div class="island island-2"></div>
+    <div class="island island-3"></div>
+
+    <!-- Landingsplass -->
+    <div id="helipad">
+        <span>H</span>
+    </div>
+
+    
+
+
+<!-- Redningshelikopter -->
+<div id="helicopter">
+    <img
+        src="images/helicopter.svg"
+        alt="Rødt og hvitt redningshelikopter"
+        class="helicopter-body"
+        draggable="false"
+    >
+    <div class="helicopter-rotor"></div>
+</div>
+
+
+
+
+
+<!-- Person som trenger hjelp -->
+<div id="rescue-person" title="Person som trenger hjelp">
+    🆘
+</div>
+
+
+<!-- Melding ved fullført redningsoppdrag -->
+<div id="mission-message" role="status" aria-live="polite">
+    <strong>OPPDRAG FULLFØRT!</strong>
+    <span>Vellykket landing, pilot!</span>
+    <small>+1 REDNINGSOPPDRAG</small>
+</div>
+
+</div>
+
+
+        <!-- Informasjon om spillet -->
+        <section class="game-controls">
+            <p>🎮 Styring: Piltaster eller museklikk</p>
+            <p>🚨 Redningsoppdrag: <span id="missions">0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 GUMIS Helicopter Rescue – Øygarden</p>
+    </footer>
+
+</body>
+</html>
