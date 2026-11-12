@@ -43,38 +43,34 @@
 <!-- Spilleområde med øyer og landingsplass -->
 <div id="game-area">
 
-    <!-- Øyer i havet -->
-    <div class="island island-1"></div>
-    <div class="island island-2"></div>
-    <div class="island island-3"></div>
-
     <!-- Landingsplass -->
     <div id="helipad">
         <span>H</span>
     </div>
 
-    
 
 
-<!-- Redningshelikopter -->
+<!-- Moderne SAR-redningshelikopter -->
 <div id="helicopter">
     <img
-        src="images/helicopter.svg"
-        alt="Rødt og hvitt redningshelikopter"
+        src="images/helicopter-sar.png"
+        alt="Moderne norsk SAR-redningshelikopter"
         class="helicopter-body"
         draggable="false"
     >
-    <div class="helicopter-rotor"></div>
+
+    <!-- Roterende hovedrotor -->
+    <div class="sar-rotor"></div>
 </div>
 
 
 
 
-
-<!-- Person som trenger hjelp -->
+<!-- Nødsignal fra person som trenger hjelp -->
 <div id="rescue-person" title="Person som trenger hjelp">
-    🆘
+    <span>SOS</span>
 </div>
+
 
 
 <!-- Melding ved fullført redningsoppdrag -->
@@ -87,11 +83,45 @@
 </div>
 
 
-        <!-- Informasjon om spillet -->
-        <section class="game-controls">
-            <p>🎮 Styring: Piltaster eller museklikk</p>
-            <p>🚨 Redningsoppdrag: <span id="missions">0</span></p>
-        </section>
+        
+<!-- Kontrollpanel for redningshelikopteret -->
+<section class="game-controls">
+
+    <div class="control-header">
+        <h2>FLIGHT CONTROL SYSTEM</h2>
+        <span class="control-online">● ONLINE</span>
+    </div>
+
+    <div class="control-grid">
+
+        <div class="control-card">
+            <h3>HELIKOPTERSTATUS</h3>
+            <p id="flight-status">I LUFTEN</p>
+        </div>
+
+        <div class="control-card">
+            <h3>AKTIVT OPPDRAG</h3>
+            <p id="mission-status">HENT PERSONEN</p>
+        </div>
+
+        <div class="control-card">
+            <h3>FULLFØRTE OPPDRAG</h3>
+            <p id="missions">0</p>
+        </div>
+
+        <div class="control-card">
+            <h3>POSISJON</h3>
+            <p id="helicopter-position">X: 100 Y: 100</p>
+        </div>
+
+    </div>
+
+    <p class="control-instructions">
+        🎮 Bruk piltastene eller klikk på kartet for å fly.
+    </p>
+
+</section>
+
     </main>
 
     <footer>

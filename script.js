@@ -7,6 +7,12 @@ const gameArea = document.getElementById("game-area");
 
 const helipad = document.getElementById("helipad");
 const missionsDisplay = document.getElementById("missions");
+// Henter posisjonsvisningen fra kontrollpanelet
+const positionDisplay = document.getElementById("helicopter-position");
+// Henter oppdragsstatus fra kontrollpanelet
+const missionStatus = document.getElementById("mission-status");
+// Henter helikopterstatus fra kontrollpanelet
+const flightStatus = document.getElementById("flight-status");
 const missionMessage = document.getElementById("mission-message");
 
  // Henter personen som trenger hjelp
@@ -40,6 +46,9 @@ function moveHelicopter() {
 
     helicopter.style.left = posX + "px";
     helicopter.style.top = posY + "px";
+// Oppdaterer helikopterets posisjon i kontrollpanelet
+positionDisplay.textContent =
+    `X: ${Math.round(posX)} Y: ${Math.round(posY)}`;
 
     checkRescue();
     checkLanding();
@@ -115,6 +124,26 @@ function checkLanding() {
         centerY >= helipadRect.top &&
         centerY <= helipadRect.bottom;
 
+
+ 
+ // Oppdaterer flystatus og rotorhastighet
+if (landed) {
+    flightStatus.textContent = "PÅ LANDINGSPLASSEN";
+    flightStatus.style.color = "#ffd166";
+
+    // Senker rotorhastigheten ved landing
+    helicopter.classList.add("landed");
+
+} else {
+    flightStatus.textContent = "I LUFTEN";
+    flightStatus.style.color = "#40ffb0";
+
+    // Øker rotorhastigheten ved avgang
+    helicopter.classList.remove("landed");
+}
+
+
+
     if (landed && !hasLanded && personRescued) {
         missions++;
         missionsDisplay.textContent = missions;
@@ -162,6 +191,9 @@ function checkRescue() {
     if (rescued) {
         personRescued = true;
         rescuePerson.classList.add("rescued");
+
+        // Oppdaterer oppdraget etter redningen
+        missionStatus.textContent = "RETURNER TIL BASEN";
 
         // Viser melding om redningen
         missionMessage.querySelector("strong").textContent =
@@ -219,7 +251,10 @@ function startNewMission() {
     rescuePerson.classList.remove("rescued");
 
     personRescued = false;
-    
+
+    // Viser status for det nye oppdraget
+    missionStatus.textContent = "HENT PERSONEN";
+
     // Starter neste redningsoppdrag
 startNewMission();
 }
